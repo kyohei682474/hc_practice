@@ -104,8 +104,9 @@ footer{
   .name{
     text-align: center;
     margin: 0 auto;
+    width: 360px;
   }
-
+  
   .profile-boxes{
     flex-direction: column;
   }
