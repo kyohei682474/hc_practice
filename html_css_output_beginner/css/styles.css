@@ -5,15 +5,20 @@ body{
 }
 /* header */
 
-
+/* .main-visual{
+  justify-content: space-between;
+  align-items: center
+} */
 .container{
   padding:0 4% 0 4%;
   display:flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 100px;
+  /* justify-content: center; */
+  justify-content: space-between;
+  /* align-items: baseline; */
+  align-items: center;
   height: 55px;
 }
+
 .resume{
   color:white;
   text-align: center;
