@@ -1,4 +1,4 @@
-groups = ['A', 'B','C', 'D','E','F']
+groups = ['A', 'B','C','D','E','F']
 numbers = [1, 2]
 number =  numbers.sample(1)
 if number == [1]
