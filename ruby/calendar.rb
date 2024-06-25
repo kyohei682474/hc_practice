@@ -1,8 +1,9 @@
 require 'optparse'
 require 'date'
 opt = OptionParser.new
-opt.on('-m value'){|v| p v }
-opt.parse(ARGV)
+params = {} 
+opt.on('-m [value]'){|v| params[:m] = v }
+opt.parse!(ARGV)
 p ARGV
 
 weeks = ["日","月","火","水","木","金","土",]
