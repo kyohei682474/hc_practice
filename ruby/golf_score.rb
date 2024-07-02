@@ -9,6 +9,53 @@ number_of_strokes = gets.chomp.split(',').map(&:to_i)
 # 最終出力を格納するための空の配列を作成
 comprehensive_judgements = []
 # 条件分けして結果を出力
+# ハッシュにより条件分岐の記述を軽減している
+SCORE_MAPPING = {
+  -4 => "コンドル",
+  -3 => "アルバトロス",
+  -2 => "イーグル",
+  -1 => "バーディ",
+  0 => "パー",
+  1 => "ボギー"
+  }
+
+[regulation_number_of_strokes, number_of_strokes].transpose.each do |regulation_number_of_stroke, number_of_stroke|
+  result = number_of_stroke - regulation_number_of_stroke
+  # ２以上のボギーとホールインワンの条件分岐を記述
+  if result >= 2
+    comprehensive_judgements << "#{result}ボギー"
+  elsif regulation_number_of_stroke >= 3 && number_of_stroke == 1
+    comprehensive_judgements << 'ホールインワン'
+  else
+    comprehensive_judgements << SCORE_MAPPING[result]
+  end
+end
+puts comprehensive_judgements.join(',')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # [regulation_number_of_strokes, number_of_strokes].transpose.each do |regulation_number_of_stroke, number_of_stroke|
 #   if number_of_stroke - regulation_number_of_stroke >= 2
 #     comprehensive_judgements << "#{number_of_stroke - regulation_number_of_stroke}ボギー"
@@ -29,23 +76,3 @@ comprehensive_judgements = []
 #   end
 # end
 # puts comprehensive_judgements.join(',')
-SCORE_MAPPING = {
-  -4 => "コンドル",
-  -3 => "アルバトロス",
-  -2 => "イーグル",
-  -1 => "バーディ",
-  0 => "パー",
-  1 => "ボギー"
-  }
-
-[regulation_number_of_strokes, number_of_strokes].transpose.each do |regulation_number_of_stroke, number_of_stroke|
-  result = number_of_stroke - regulation_number_of_stroke
-  if result >= 2
-    comprehensive_judgements << "#{result}ボギー"
-  elsif regulation_number_of_stroke >= 3 && number_of_stroke == 1
-    comprehensive_judgements << 'ホールインワン'
-  else
-    comprehensive_judgements << SCORE_MAPPING[result]
-  end
-end
-puts comprehensive_judgements.join(',')
