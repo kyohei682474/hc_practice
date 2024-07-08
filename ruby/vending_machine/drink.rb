@@ -12,6 +12,6 @@ class Drink
     @price
   end
 end
-
-pepsi = Drink.new('pepsi', 150)
-p pepsi.name
+drinks =[]
+drinks << drink = Drink.new('pepsi', 150)
+p drinks[0]
