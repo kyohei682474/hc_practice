@@ -1,53 +1,9 @@
-# class Suica
-#   DEPOSIT = 500
-#   def initialize(money = DEPOSIT,charge)
-#     @money = money
-#     @charge = charge
-#   end
-#   # セッターメソッド
-#   def money
-#     @money
-#   end
 
-#   def money=(value)
-#     @money = value
-#   end
-
-#   def charge
-#     @charge
-#   end
-
-#   def charge=(value)
-#     @charge = value
-#   end
-
-#   def charged
-#      if @charge >= 100
-#       @money + @charge
-#      else @charge < 100
-#       puts "100円以上チャージしてください。"
-#       @money
-#      end
-#   end
-
-#   def check
-#     @money
-#   end
-# end
-
-
-# suica = Suica.new(100)
-# p suica.charged
-# suica = Suica.new(100)
-
-# # チャージ後の値の更新
-#   suica.money = suica.charged
-# p suica.check
 
 class Suica
- DEPOSIT = 500
- def initialize(money)
+ def initialize(money = 500)
   @money = money
+  @stock_of_suica = stock_of_suica
  end
 
  def money 
@@ -58,19 +14,26 @@ class Suica
   @money = value
  end
 
- def charge
-  if @money >= 100
-    DEPOSIT + @money
+ def stock_of_suica
+   @stock_of_suica
+ end
+
+ def stock_of_suica=(value)
+   @stock_of_suica = value
+ end
+
+ def charge(charged)
+  if charged >= 100
+   p  @stock_of_suica =  @money + charged
+    true
   else
-    DEPOSIT
+    false
   end
+ end
 end
 
-  def balance_of_suica
-    @money = charge 
-  end
-end
 
-suica = Suica.new(100)
-p suica.charge
-p suica.balance_of_suica
+suica = Suica.new
+p suica.money
+suica.charge(500)
+p suica.stock_of_suica
