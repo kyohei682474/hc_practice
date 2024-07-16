@@ -1,10 +1,9 @@
 class VendingMachine
   attr_accessor :stock
 #  デフォルト値としてpepsiの在庫を５本とする 
-  def initialize(stock = {'pepsi' => 1})
+  def initialize(stock = {'pepsi' => 5, 'いろはす' => 5, 'monstar' => 5})
     @stock = stock
     @sales_amount = 0
-
   end
 
   
@@ -24,16 +23,18 @@ class VendingMachine
        update_sales_amount(drink.price)
        true
     else
-      # if @stock.key?(drink.kind) && @stock[drink.kind] = 0 
-      #   raise puts "在庫がありません"
-      # else @stock.key?(drink.kind) && @stock[drink.kind]> 0 && suica.money < drink.price
-      #   raise puts "お金が足りません"
-      # end
-
       exception_handling_of_purchase_drink(drink, suica)
     end
-    
   end
+# 購入可能な商品リスト
+    def purchaseable_drink_list
+      #   stock.select{|kind, quantity| quantity > 0}.each_key do |key|
+      #   key
+      #  end
+      @stock.select { |kind, quantity| quantity > 0 }.keys.join("\n")
+    end
+    
+
 
   # 購入における例外処理用のメソッド
   def exception_handling_of_purchase_drink(drink, suica)
@@ -97,19 +98,24 @@ class Suica
   end
  end
 
-
+suica = Suica.new
 pepsi = Drink.new('pepsi',150)
 vending_machine = VendingMachine.new
-vending_machine.stock
-p vending_machine.stock
-suica = Suica.new
+# vending_machine.stock
+
 # 例外を発生させる
-begin
-  suica.charge(50)
-rescue RuntimeError => e
-  puts "チャージ金額が100円未満のためにエラーが生じています。"
-  puts "エラー:#{e.class} #{e.message}"
-end
-vending_machine.purchase_drink(pepsi,suica)
-p vending_machine.stock
-irohasu = Drink,
+# begin
+#   suica.charge(50)
+# rescue RuntimeError => e
+#   puts "チャージ金額が100円未満のためにエラーが生じています。"
+#   puts "エラー:#{e.class} #{e.message}"
+# end
+# vending_machine.purchase_drink(pepsi,suica)
+# irohasu = Drink.new('いろはす',120)
+# vending_machine.add_drink(irohasu,5)
+# vending_machine.add_drink(pepsi,5)
+# vending_machine.stock
+
+puts vending_machine.purchaseable_drink_list
+
+
