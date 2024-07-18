@@ -5,8 +5,13 @@ class Drink
  end
 
  def self.irohasu
-   self.new()
+   self.new('いろはす',120)
  end
+
+ def self.monster
+   self.new('monstar', 300)
+ end
+
 
  def initialize(name,price)
   @name = name
@@ -18,7 +23,7 @@ end
 
 class VendingMachine
   attr_accessor :stocks
-  def initialize(stocks = { 'pepsi' => { price: 150, quantity: 5 } })
+  def initialize(stocks = {'pepsi' => { price: 150, quantity: 5 } })
     @stocks = stocks
   end
 
