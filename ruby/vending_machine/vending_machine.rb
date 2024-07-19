@@ -154,7 +154,6 @@ class VendingMachine
        @stocks[drink.name] -= 1
        suica.money -= drink.price
        update_sales_amount(drink.price)
-       true
     else
       exception_handling_of_purchase_drink(drink, suica)
     end
@@ -174,9 +173,9 @@ class VendingMachine
     # 購入における例外処理用のメソッド
   def exception_handling_of_purchase_drink(drink, suica)
     if @stocks.key?(drink.name) && @stocks[drink.name] == 0 
-      raise puts "在庫がありません"
+      raise "在庫がありません"
     else @stocks.key?(drink.name) && @stocks[drink.name]> 0 && suica.money < drink.price
-      raise 
+      raise   "チャージ金額が足りません。"
     end
   end
  
@@ -234,6 +233,13 @@ class Suica
 
  vm = VendingMachine.new
  suica =Suica.new
+#  チャージ金額が100未満の例外処理
+ begin 
+  suica.charge(99)
+ rescue
+  puts "チャージ金額が不足しています。"
+ end
+
 #  初期値の500円を出力
  p suica.money
 # suicaに100円チャージしてチャージされたことを確認する。
@@ -253,4 +259,20 @@ class Suica
  p vm.sales_amount
  p suica.money
  p vm.stocks
+begin 
+  mv.purchase_drink(pepsi, suica)
+rescue
+  puts "在庫がないかチャージ金額が足りません。"
+end
+
+irohasu = Drink.new('いろはす', 120)
+monstar = Drink.new('monstar',  230)
+vm.add_drink(irohasu, 5)
+vm.add_drink(monstar, 5)
+p vm.stocks
+suica.charge(1000)
+p vm.purchasable_drink_list(suica)
+vm.purchase_drink(irohasu, suica)
+vm.purchase_drink(monstar, suica)
+p vm.stocks
 

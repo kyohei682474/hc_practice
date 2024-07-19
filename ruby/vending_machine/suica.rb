@@ -119,20 +119,22 @@ class Drink
 end
 
 class VendingMachine
-  attr_accessor :stocks ,:prices
-  def initialize(stocks = {'water' => 5, 'cola' => 5, }, prices = {'water' => 100, 'cola' => 120 })
+  attr_accessor :stocks 
+  def initialize(stocks = {'water' => {price:100 ,quantity:5 }, 'cola' => {price: 120, quantity: 5}})
     @stocks = stocks
-    @prices = prices
+
+  end
+
+  def stocks_drink_list
+    stocks.each do |key, value|
+      puts "ストックされているドリンクは #{key}。 本数は #{value[:quantity]}本"
+    end
   end
   
 end
 
+
 vm = VendingMachine.new
 p vm.stocks
-p vm.prices
 p vm.stocks['water']
-p vm.prices['water']
-stocks.class
-stocks.map do |stock|
-  p stock
-end
+vm.stocks_drink_list
