@@ -1,5 +1,5 @@
 
-class VendingMachine 
+class VendingMachine
 #  デフォルト値としてpepsiの在庫を５本とする 
   def initialize(stocks = {'pepsi' => 5, 'いろはす' => 5, 'monstar' => 5},prices ={'pepsi' => 150, 'いろはす' => 120, 'monstar' => 300})
     @stocks = stocks
@@ -94,18 +94,15 @@ class Suica
   def money
     @money
   end
-
+#  チャージ金額の減少
   def deduct_money(amount)
     if @money > amount
        @money -= amount
-       true
     else
-       "お金が足りません"
+       "チャージ金額が足りません"
     end
   end
-  
-  
-  
+  #  suicaのチャージ
   def charge(charged)
    if charged >= 100
        @money += charged
@@ -120,7 +117,7 @@ class Suica
     @money = value
   end 
   
- end
+end
 
  vm = VendingMachine.new
  suica =Suica.new
@@ -166,5 +163,4 @@ p vm.purchasable_drink_list(suica)
 vm.purchase_drink(irohasu, suica)
 vm.purchase_drink(monstar, suica)
 p vm.stocks
-
 p vm.sales_amount
