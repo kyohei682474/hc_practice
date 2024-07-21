@@ -122,7 +122,7 @@ class VendingMachine
   attr_accessor :stocks 
   def initialize(stocks = {'water' => {price:100 ,quantity:5 }, 'cola' => {price: 120, quantity: 5}})
     @stocks = stocks
-
+    @sales_amount = sales_amount
   end
 
   def stocks_drink_list
@@ -130,11 +130,63 @@ class VendingMachine
       puts "ストックされているドリンクは #{key}。 本数は #{value[:quantity]}本"
     end
   end
+
+  def purchase(drink,suica)
+    if stocks.key?(drink.name) && stocks[drink.name][:quantity] > 0 && suica.money >= stocks[drink.name][:price]
+       stocks[drink.name][:quantity] -= 1
+       suica.deduct_money(stocks[drink.name][:price]) 
+       update_sales_amount(stocks[drink.name][:price])
+    else
+      "購入できません"
+    end
+  end
+
+  def update_sales_amount(amount)
+      @sales_amount += amount 
+  end
+
+  def sales_amount
+    @sales_amount
+  end  
+private
+  def 
+  
+
+  
   
 end
 
+class Suica
+  def initialize(money)
+    @money = money
+  end
 
+  def money
+    @money
+  end
+
+  def deduct_money(amount)
+    if @money > amount
+       @money -= amount
+    else
+       "お金が足りません"
+    end
+  end
+
+private
+  def money=(value)
+    @money = value
+  end
+end
+
+water = Drink.new('water',100)
 vm = VendingMachine.new
 p vm.stocks
 p vm.stocks['water']
 vm.stocks_drink_list
+
+suica = Suica.new(500)
+p suica.money
+p vm.purchase(water,suica)
+p suica.money
+p vm.stocks
