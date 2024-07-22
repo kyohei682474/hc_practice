@@ -1,5 +1,5 @@
 class Pokemon
-  attr_reader :name, :type1, :type2, :hp
+  attr_reader :name
 
   def initialize(name, type1, type2, hp)
     @name = name
@@ -13,7 +13,6 @@ class Pokemon
   end
 end
 
-rizardon = Pokemon.new('リザードン', 'ほのう', 'ひこう', 100)
-p rizardon.name
-p rizardon.type1
-rizardon.attack
+poke = Pokemon.new('ピカチュー')
+p poke.name
+poke.attack
