@@ -30,7 +30,8 @@ puts vm.purchasable_drink_list(suica)
 # # pepsiを購入後suicaのチャージ残高を減少させる。在庫を減らす。売上金額を増やす。
 p vm.purchase_drink(pepsi, suica)
 # vm.purchase_drink(pepsi, suica)
-# p vm.sales_amount
+p vm.sales_amount
+p vm.stock_list
 # p vm.stocks
 # begin
 #   mv.purchase_drink(pepsi, suica)

@@ -12,13 +12,14 @@ class VendingMachine
   attr_accessor :stocks
   attr_reader :prices, :sales_amount
 
-  # def to_s
-  #   "#{@name} #{@price}"
+  # def stock_list
+  #   @stocks.keys.map do |key|
+  #     key.name
+  #   end
   # end
-
   def stock_list
-    @stocks.keys.map do |value|
-      value.name
+    @stocks.map do |key, value|
+      "#{key.name} 残り#{value}本 "
     end
   end
 
