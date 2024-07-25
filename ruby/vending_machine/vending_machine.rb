@@ -1,4 +1,7 @@
 class VendingMachine
+  attr_accessor :stocks
+  attr_reader :prices, :sales_amount
+
   #  デフォルト値としてpepsiの在庫を５本とする
   def initialize
     pepsi = Drink.new('pepsi', 150)
@@ -9,14 +12,6 @@ class VendingMachine
     @sales_amount = 0
   end
 
-  attr_accessor :stocks
-  attr_reader :prices, :sales_amount
-
-  # def stock_list
-  #   @stocks.keys.map do |key|
-  #     key.name
-  #   end
-  # end
   def stock_list
     @stocks.map do |key, value|
       "#{key.name} 残り#{value}本 "
@@ -25,20 +20,21 @@ class VendingMachine
 
   # ストックがある場合と全くない場合の補充の条件
   def add_drink(drink, quantity)
-    if @stocks.key?(drink.name)
-      @stocks[drink.name] += quantity
+    # p @stocks[drink] += quantity
+    if @stocks.key?(drink)
+      @stocks[drink] += quantity
     else
-      @stocks[drink.name] = quantity
+      @stocks[drink] = quantity
     end
   end
 
   # ジュースが注文されストックが消費された時の条件。さらにsuicaの残高も減る。
   def purchase_drink(drink, suica)
-    if @stocks.key?(drink) && @stocks[drink] > 0 && suica.deduct_money(drink.price)
+    if @stocks.key?(drink) && (@stocks[drink]).positive? && suica.deduct_money(drink.price)
       @stocks[drink] -= 1
       update_sales_amount(drink.price)
     else
-      exception_handling_of_purchase_drink(drink_name, suica)
+      exception_handling_of_purchase_drink(drink, suica)
     end
   end
 
