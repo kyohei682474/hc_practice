@@ -1,5 +1,5 @@
 class Pokemon
-  attr_reader :name
+  attr_reader :name, :type1, :type2, :hp
 
   def initialize(name, type1, type2, hp)
     @name = name
@@ -13,6 +13,17 @@ class Pokemon
   end
 end
 
-poke = Pokemon.new('ピカチュー')
+class Pikachu < Pokemon # rubocop:disable Style/Documentation
+  def initialize(name, type1, type2, hp)
+    super
+
+    def attack
+      super
+      puts '10万ボルト'
+    end
+  end
+end
+
+poke = Pikachu.new('ピカチュウ', 'でんき', '_', 100)
 p poke.name
 poke.attack
