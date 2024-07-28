@@ -6,15 +6,15 @@ class Drink
     @price = price
   end
 
-  def hash
-    [name, price].hash
+  def ==(other)
+    other.is_a?(Drink) && name == other.name && price == other.price
   end
 
   def eql?(other)
     self == other
   end
 
-  def ==(other)
-    other.is_a?(Drink) && name == other.name && price == other.price
+  def hash
+    [name, price].hash
   end
 end
