@@ -42,13 +42,12 @@ class VendingMachine
   #
 
   def purchase_drink(drink, suica)
-    if @stocks.include?(drink) && suica.money >= drink.price
-      @stocks.delete_at(@stocks.index(drink))
-      suica.deduct_money(drink.price)
-      update_sales_amount(drink.price)
-    else
-      exception_handling_of_purchase_drink(drink, suica)
-    end
+    raise '在庫がありません' unless @stocks.include?(drink)
+    raise 'チャージ金額が足りません。' if suica.money < drink.price
+
+    @stocks.delete_at(@stocks.index(drink))
+    suica.deduct_money(drink.price)
+    update_sales_amount(drink.price)
   end
 
   # 購入可能な商品リスト
@@ -58,15 +57,6 @@ class VendingMachine
     @stocks.select { |stock| suica.money >= stock.price }.map { |drink| drink.name }.uniq
     # # (@stocks.select { |stock| stock }).map { |n| n.price }
     # @stocks.include
-  end
-
-  # 購入における例外処理用のメソッド
-  def exception_handling_of_purchase_drink(drink, suica)
-    if !@stocks.include?(drink)
-      raise '在庫がありません'
-    elsif @stocks.include?(drink) && @stocks.count(drink) > 0 && suica.money < drink.price
-      raise 'チャージ金額が足りません。'
-    end
   end
 
   # 売上金額の更新
