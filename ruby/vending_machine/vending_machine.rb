@@ -42,7 +42,7 @@ class VendingMachine
   #
 
   def purchase_drink(drink, suica)
-    raise '在庫がありません' unless @stocks.include?(drink)
+    raise '在庫がありません' unless  @stocks.include?(drink)
     raise 'チャージ金額が足りません。' if suica.money < drink.price
 
     @stocks.delete_at(@stocks.index(drink))

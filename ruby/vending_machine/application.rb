@@ -19,7 +19,7 @@ p pepsi.price
 puts vm.stock_list_count
 
 # # ドリンクの購入
-vm.purchase_drink(pepsi, suica)
+p vm.purchase_drink(pepsi, suica)
 # ストックの確認とSuicaの残金と売り上げ金額確認
 p vm.stock_list_count
 p suica.money

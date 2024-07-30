@@ -13,8 +13,4 @@ class Drink
   def eql?(other)
     self == other
   end
-
-  def hash
-    [name, price].hash
-  end
 end
