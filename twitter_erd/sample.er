@@ -1,26 +1,87 @@
 [users]
   *id {label: "bigint, not null"}
   user_name {label: "varchar, null, uniq"}
-  telephon_number {label: "integer, null, uniq"}
-  email {label: "varchar, not null, uniq" }
-  introduce {label: "varchar, not null" }
-  web_site {label: "varchar, not null" }
-  birthday{label: "integer, not null" }
-  profile_image{label: "blob, not null, uniq" }
-  abater_image{label: "blob, not null, uniq" }
+  phone_number {label: "varchar(255), null, uniq"}
+  email {label: "varchar(256), not null, uniq" }
+  biograhy {label: "varchar, not null" }
+  web_site {label: "varchar(2083), not null" }
+  birthday{label: "date, not null" }
+  profile_image{label: "int, not null" }
+  avatar_image{label: "int, not null" }
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
-[items] {bgcolor: "#d0e0d0"}
+[tweets] {bgcolor: "#C0C0C0"}
   *id {label: "bigint, not null"}
   user_id {label: "bigint, not null, FK(users)"}
-  name {label: "varchar, not null"}
+  tweet {label: "varchar(140), not null"}
+  retweet_id {label:"bigint, not null, FK(retweets)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
+
+[retweets] {bgcolor: "#C0C0C0"}
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[likes] {bgcolor: "#FF99FF"}
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[relationships] {bgcolor: "#CCFF00"}
+  *id {label: "bigint, not null"}
+  follower_id {label: "bigint, not null "}
+  folowered_id {label: "bigint, not null "}
+  created_at { label: "datatime, not null "}
+  updated_at { label: "datatime, not null "}
+
+[notifications] {bgcolor: "#FF0000"}
+  *id {label: "bigint, not null"}
+  relationship_id {label: "bigint, not null "}
+  like_id {label: "bigint, not null "}
+  created_at { label: "datatime, not null "}
+  updated_at { label: "datatime, not null "}
+
+[entries] {bgcolor: "#d0e0d0"}
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null "}
+  room_id {label: "bigint, not null "}
+  created_at { label: "datatime, not null "}
+  updated_at { label: "datatime, not null "}
+
+[rooms] {bgcolor: "#d0e0d0"}
+  *id {label: "bigint, not null"}
+  entry_id {label: "bigint, not null "}
+  chat_id {label: "bigint, not null "}
+  created_at { label: "datatime, not null "}
+  updated_at { label: "datatime, not null "}
+
+[chats] {bgcolor: "#d0e0d0"}
+  *id {label: "bigint, not null"}
+  room_id {label: "bigint, not null "}
+  user_id {label: "bigint, not null "}
+  created_at { label: "datatime, not null "}
+  updated_at { label: "datatime, not null "}
 
 # Cardinality    Syntax
 # 0 or 1         ?
 # exactly 1      1
 # 0 or more      *
 # 1 or more      +
-users *--1 `items`
+
+users 1--* `tweets`
+users 1--* `likes`
+users 1--* `relationships`
+users 1--* `entries`
+users 1--* `chats`
+tweets 1--* `retweets` 
+tweets 1--* `likes` 
+relationships 1--* `notifications`
+likes 1--* `notifications` 
+rooms 1--* `entries`
+romms 1--* `chats`
