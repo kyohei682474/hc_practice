@@ -14,7 +14,7 @@
 [tweets] {bgcolor: "#C0C0C0"}
   *id {label: "bigint, not null"}
   user_id {label: "bigint, not null, FK(users)"}
-  tweet {label: "varchar(140), not null"}
+  content {label: "varchar(140), not null"}
   retweet_id {label:"bigint, not null, FK(retweets)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
@@ -22,7 +22,7 @@
 [retweets] {bgcolor: "#C0C0C0"}
   *id {label: "bigint, not null"}
   user_id {label: "bigint, not null, FK(users)"}
-  tweet_id {label: "bigint, not null, FK(tweets)"}
+  content_id {label: "bigint, not null, FK(tweets)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -36,7 +36,7 @@
 [relationships] {bgcolor: "#CCFF00"}
   *id {label: "bigint, not null"}
   follower_id {label: "bigint, not null "}
-  folowered_id {label: "bigint, not null "}
+  foloweree_id {label: "bigint, not null "}
   created_at { label: "datatime, not null "}
   updated_at { label: "datatime, not null "}
 
@@ -56,8 +56,6 @@
 
 [rooms] {bgcolor: "#d0e0d0"}
   *id {label: "bigint, not null"}
-  entry_id {label: "bigint, not null "}
-  chat_id {label: "bigint, not null "}
   created_at { label: "datatime, not null "}
   updated_at { label: "datatime, not null "}
 
@@ -65,6 +63,7 @@
   *id {label: "bigint, not null"}
   room_id {label: "bigint, not null "}
   user_id {label: "bigint, not null "}
+  content  {label: "varchar(10000), not null "}
   created_at { label: "datatime, not null "}
   updated_at { label: "datatime, not null "}
 
@@ -93,4 +92,4 @@ tweets 1--* `favorites`
 relationships 1--* `notifications`
 likes 1--* `notifications` 
 rooms 1--* `entries`
-romms 1--* `chats`
+rooms 1--* `chats`
