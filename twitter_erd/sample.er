@@ -22,7 +22,7 @@
 [retweets] {bgcolor: "#C0C0C0"}
   *id {label: "bigint, not null"}
   user_id {label: "bigint, not null, FK(users)"}
-  content_id {label: "bigint, not null, FK(tweets)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
@@ -36,7 +36,7 @@
 [relationships] {bgcolor: "#CCFF00"}
   *id {label: "bigint, not null"}
   follower_id {label: "bigint, not null "}
-  foloweree_id {label: "bigint, not null "}
+  folowee_id {label: "bigint, not null "}
   created_at { label: "datatime, not null "}
   updated_at { label: "datatime, not null "}
 
