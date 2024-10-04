@@ -1,4 +1,5 @@
-class Suica
+cdlass Suica
+\
   attr_reader :money
 
   def initialize(money = 500)
