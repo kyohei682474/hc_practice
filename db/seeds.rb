@@ -16,3 +16,13 @@ item.image.attach(
   filename: 'dummyimg.jpeg',
   content_type: 'image/jpeg'
 )
+
+item = Item.create!(
+  name: 'cake',
+  price: '300'
+)
+item.image.attach(
+  io: File.open('./app/assets/images/dumy.jpg'),
+  filename: 'dummyimg.jpeg',
+  content_type: 'image/jpeg'
+)
