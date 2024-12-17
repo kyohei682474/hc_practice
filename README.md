@@ -1,7 +1,54 @@
-# Ti4.NYC
+# README
+課題用のrailsテンプレートです。
 
-## What is this about?
+## 前提
 
-This is a python app I built to help schedule games for a Twilight Imperium League I help organize in NYC. It's hosted on AWS and currently live at [ti4.nyc](https://ti4.nyc/).
+- dockerが必要です。
 
-It uses alambic to handle database migrations, Recaptcha APIs to mitigate spammers and sendgrid for sending emails out to participants.
+## setup
+
+```
+docker compose build
+```
+
+```
+docker compose run --rm web bin/setup
+```
+
+
+```
+docker compose run --rm web yarn install
+```
+
+## run
+
+```
+docker compose up
+```
+
+http://localhost:3000
+
+## 備考
+
+- Taskのscaffoldが含まれていますが、CIの動作確認用です。
+適宜削除いただければと思います。（そのままでも問題ないです）
+
+## rubocop
+
+rubocopがすべて通ってからレビュー依頼を出してください。
+
+auto correct
+
+```
+docker compose run --rm web bundle exec rubocop -A
+```
+
+## htmlbeautifier
+
+erbのフォーマッターです。
+フォーマッターを通してからレビュー依頼を出してください。
+
+```
+docker compose run --rm web bin/htmlbeautifier
+```
+>>>>>>> f0b4b50d2bc52428fcad2fafe75f7e6f4246c191

@@ -1,72 +1,38 @@
-*.py[cod]
 
-# C extensions
-*.so
 
-# Packages
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
-lib
-lib64
-__pycache__
 
-# Installer logs
-pip-log.txt
 
-# Unit test / coverage reports
-.coverage
-.tox
-nosetests.xml
 
-# Translations
-*.mo
 
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
 
-venv
-app.db
-microblog.log*
-.DS_Store
-.env
-.flaskenv
-*.pyc
-*.pyo
-env/
-venv/
-.venv/
-env*
-dist/
-build/
-*.egg
-*.egg-info/
-_mailinglist
-.tox/
-.cache/
-.pytest_cache/
-.idea/
-docs/_build/
-.vscode
+# Ignore bundler config.
+/.bundle
 
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*
-*,cover
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-.python-version
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+
+
