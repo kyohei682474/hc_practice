@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Welcome to Ti4 NYC</title>
+    {% endif %}
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Website for the New York City Twilight Imperium 4th edition league. We play games monthly. Signup to join our community."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1," />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <noscript
+      ><link
+        type="text/css"
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/noscript.css') }}"
+    /></noscript>
+    <script type="application/ld+json">
+      {
+        "@context": "http://www.schema.org",
+        "@type": "WebSite",
+        "name": "Twilight Imperium NYC",
+        "alternateName": "ti4.nyc",
+        "url": "https://ti4.nyc",
+        "description": "A group of Twilight Imperium players from NYC who get together to share a love of the epic space opera while making friends not War Suns."
+      }
+    </script>
+  </head>
+  <body>
+    {% block content %}{% endblock %} {% with messages =
+    get_flashed_messages(with_categories=true) %}{% if messages %}
+    <script src="{{ url_for('static', filename='js/flash.js') }}"></script>
+    {% for category, message in messages %}
+    <script>
+      window.FlashMessage.create("{{message}}", "{{category}}");
+    </script>
+    {% endfor %} {% endif %} {% endwith %}
+  </body>
+</html>
