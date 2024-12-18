@@ -52,7 +52,7 @@
                   <% @items.each do |item| %>
                     <div class="col mb-5">
                         <div class="card h-100">
-                          <%= item.image%>
+                          <% item.image%>
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -62,7 +62,7 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Fancy Product</h5>
                                     <!-- Product price-->
-                                    <%= items.price %>
+                                    <%= item.price %>
                                 </div>
                             </div>
                             <!-- Product actions-->
