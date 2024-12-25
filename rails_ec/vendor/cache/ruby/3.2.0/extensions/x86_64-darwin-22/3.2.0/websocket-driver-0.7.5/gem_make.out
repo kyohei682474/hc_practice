@@ -1,0 +1,19 @@
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/Users/seinokyouhei/.rbenv/versions/ruby-3.2.1/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-lh80ww sitelibdir\=./.gem.20241225-18001-lh80ww clean
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-lh80ww sitelibdir\=./.gem.20241225-18001-lh80ww
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-lh80ww sitelibdir\=./.gem.20241225-18001-lh80ww install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20241225-18001-lh80ww
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-lh80ww sitelibdir\=./.gem.20241225-18001-lh80ww clean

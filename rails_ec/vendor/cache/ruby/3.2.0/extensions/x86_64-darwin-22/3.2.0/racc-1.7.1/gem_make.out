@@ -1,0 +1,21 @@
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+/Users/seinokyouhei/.rbenv/versions/ruby-3.2.1/bin/ruby extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-zbse1m sitelibdir\=./.gem.20241225-18001-zbse1m clean
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-zbse1m sitelibdir\=./.gem.20241225-18001-zbse1m
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-zbse1m sitelibdir\=./.gem.20241225-18001-zbse1m install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20241225-18001-zbse1m/racc
+
+current directory: /Users/seinokyouhei/hc_practice/hc_practice/rails_ec/vendor/cache/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241225-18001-zbse1m sitelibdir\=./.gem.20241225-18001-zbse1m clean
